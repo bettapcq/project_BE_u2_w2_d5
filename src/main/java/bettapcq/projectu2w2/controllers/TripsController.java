@@ -2,6 +2,7 @@ package bettapcq.projectu2w2.controllers;
 
 import bettapcq.projectu2w2.entities.Trip;
 import bettapcq.projectu2w2.exceptions.ValidationException;
+import bettapcq.projectu2w2.payloads.ChangeTripStatusDTO;
 import bettapcq.projectu2w2.payloads.EditTripsDTO;
 import bettapcq.projectu2w2.payloads.TripsDTO;
 import bettapcq.projectu2w2.services.TripsService;
@@ -71,4 +72,16 @@ public class TripsController {
         this.tripsService.findByIdAndDelete(tripId);
     }
 
+    //CHANGE TRIP STATUS
+    @PatchMapping("/{tripId}")
+    public Trip changeTripStatus(@PathVariable Long tripId, @RequestBody @Validated ChangeTripStatusDTO payload, BindingResult valRes) {
+        if (valRes.hasErrors()) {
+            List<String> errList = valRes.getFieldErrors().stream().map(fieldError -> fieldError.getDefaultMessage()).toList();
+
+            throw new ValidationException(errList);
+        }
+
+        return this.tripsService.changeTripStatus(tripId, payload);
+
+    }
 }

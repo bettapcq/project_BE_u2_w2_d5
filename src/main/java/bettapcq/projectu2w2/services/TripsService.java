@@ -3,6 +3,7 @@ package bettapcq.projectu2w2.services;
 import bettapcq.projectu2w2.entities.Trip;
 import bettapcq.projectu2w2.exceptions.BadRequestException;
 import bettapcq.projectu2w2.exceptions.NotFoundException;
+import bettapcq.projectu2w2.payloads.ChangeTripStatusDTO;
 import bettapcq.projectu2w2.payloads.EditTripsDTO;
 import bettapcq.projectu2w2.payloads.TripsDTO;
 import bettapcq.projectu2w2.repositories.TripsRepository;
@@ -64,5 +65,9 @@ public class TripsService {
         this.tripsRepository.delete(found);
     }
 
-
+    public Trip changeTripStatus(Long tripId, ChangeTripStatusDTO payload) {
+        Trip found = this.tripsRepository.findById(tripId).orElseThrow(() -> new NotFoundException(tripId));
+        found.setStatus(payload.status());
+        return found;
+    }
 }

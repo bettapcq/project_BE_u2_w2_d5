@@ -37,6 +37,6 @@ public class Booking {
         this.trip = trip;
         this.employee = employee;
         this.requestDate = requestDate;
-        this.notes = notes;
+        this.notes = (notes == null) ? "" : notes;
     }
 }
