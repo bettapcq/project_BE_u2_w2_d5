@@ -3,6 +3,7 @@ package bettapcq.projectu2w2.services;
 import bettapcq.projectu2w2.entities.Trip;
 import bettapcq.projectu2w2.exceptions.BadRequestException;
 import bettapcq.projectu2w2.exceptions.NotFoundException;
+import bettapcq.projectu2w2.payloads.EditTripsDTO;
 import bettapcq.projectu2w2.payloads.TripsDTO;
 import bettapcq.projectu2w2.repositories.TripsRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -44,7 +45,7 @@ public class TripsService {
         return this.tripsRepository.findAll(pageable);
     }
 
-    public Trip findByIdAndEdit(Long tripId, TripsDTO payload) {
+    public Trip findByIdAndEdit(Long tripId, EditTripsDTO payload) {
         Trip found = this.tripsRepository.findById(tripId).orElseThrow(() -> new NotFoundException(tripId));
 
         found.setDestination(payload.destination());

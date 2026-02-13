@@ -65,7 +65,7 @@ public class EmployeesController {
 
     //DELETE
 
-    @DeleteMapping("/employeeId")
+    @DeleteMapping("/{employeeId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void findByIdANdDelete(@PathVariable Long employeeId) {
         this.employeesService.findByIdAndDelete(employeeId);

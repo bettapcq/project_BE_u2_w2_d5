@@ -2,6 +2,7 @@ package bettapcq.projectu2w2.controllers;
 
 import bettapcq.projectu2w2.entities.Trip;
 import bettapcq.projectu2w2.exceptions.ValidationException;
+import bettapcq.projectu2w2.payloads.EditTripsDTO;
 import bettapcq.projectu2w2.payloads.TripsDTO;
 import bettapcq.projectu2w2.services.TripsService;
 import org.springframework.data.domain.Page;
@@ -52,7 +53,7 @@ public class TripsController {
 
     //PUT BY ID
     @PutMapping("/{tripId}")
-    public Trip editTrip(@RequestBody TripsDTO payload, @PathVariable Long tripId, BindingResult valRes) {
+    public Trip editTrip(@RequestBody EditTripsDTO payload, @PathVariable Long tripId, BindingResult valRes) {
 
         if (valRes.hasErrors()) {
             List<String> errList = valRes.getFieldErrors().stream().map(fieldError -> fieldError.getDefaultMessage()).toList();
