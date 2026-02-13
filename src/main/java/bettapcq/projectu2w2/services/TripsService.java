@@ -60,7 +60,7 @@ public class TripsService {
 
     public void findByIdAndDelete(Long tripId) {
         Trip found = this.tripsRepository.findById(tripId).orElseThrow(() -> new NotFoundException(tripId));
-        this.tripsRepository.deleteById(tripId);
+        this.tripsRepository.delete(found);
     }
 
 
