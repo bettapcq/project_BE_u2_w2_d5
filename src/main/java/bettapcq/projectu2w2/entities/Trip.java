@@ -26,11 +26,12 @@ public class Trip {
     @Column(nullable = false)
     private LocalDate date;
 
-    private TripStatus status;
+
+    private String status;
 
     public Trip(String destination, LocalDate date) {
         this.destination = destination;
         this.date = date;
-        this.status = TripStatus.SCHEDULED;
+        this.status = "SCHEDULED";
     }
 }

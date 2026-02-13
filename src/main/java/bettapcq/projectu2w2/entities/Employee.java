@@ -26,11 +26,14 @@ public class Employee {
     private String surname;
     @Column(nullable = false)
     private String email;
+    @Column(name = "profile_img")
+    private String profileImg;
 
     public Employee(String username, String name, String surname, String email) {
         this.username = username;
         this.name = name;
         this.surname = surname;
         this.email = email;
+        this.profileImg = "https://fastly.picsum.photos/200/300";
     }
 }
