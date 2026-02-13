@@ -28,9 +28,9 @@ public class Trip {
 
     private TripStatus status;
 
-    public Trip(String destination, LocalDate date, TripStatus status) {
+    public Trip(String destination, LocalDate date) {
         this.destination = destination;
         this.date = date;
-        this.status = status;
+        this.status = TripStatus.SCHEDULED;
     }
 }
