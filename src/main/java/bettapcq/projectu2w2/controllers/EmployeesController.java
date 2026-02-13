@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -69,6 +70,13 @@ public class EmployeesController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void findByIdANdDelete(@PathVariable Long employeeId) {
         this.employeesService.findByIdAndDelete(employeeId);
+    }
+
+    //CHANGE PROFILE IMG
+    @PatchMapping("/{employeeId}/img")
+    public Employee uploadImage(@RequestParam("profile_img") MultipartFile file, @PathVariable Long employeeId) {
+
+        return this.employeesService.editProfileImg(file, employeeId);
     }
 
 }
